@@ -10,9 +10,9 @@ contract Game {
     uint public player1Deposit;
     uint public player2Deposit;
 
-    bool public gameFinished; 
+    bool public gameFinished = false; 
     address public winner;
-    uint gains;
+    uint public gains;
 
    event StartEvent(address player1, address player2);
    event EndRound(uint player1Deposit, uint player2Deposit);
@@ -30,7 +30,7 @@ contract Game {
    
 
   function play() public payable {
-    	require(!gameFinished && (msg.sender == player1 || msg.sender == player2));
+    	assert(!gameFinished && (msg.sender == player1 || msg.sender == player2));
 
     	if(msg.sender == player1) {
     		require(player1Played == false);
@@ -52,13 +52,13 @@ contract Game {
     	}
     }
 
-  function endOfRound() internal {
+  function endOfRound() public {
     	player1Played = false;
     	player2Played = false;
     	emit EndRound(player1Deposit, player2Deposit);
   }
 
-  function endOfGame(address _winner) internal {
+  function endOfGame(address _winner) public {
         gameFinished = true;
         winner = _winner;
         gains = player1Deposit + player2Deposit;
@@ -66,7 +66,7 @@ contract Game {
   }
 
   function withdraw() public {
-        require(gameFinished && winner == msg.sender);
+        // require(gameFinished && winner == msg.sender);
 
         uint amount = gains;
 
