@@ -1,0 +1,67 @@
+<mat-tab-group>
+    <mat-tab > 
+        <section class="new-training" label="First" fxLayout="column" fxLayoutAlign="center center"> 
+      <mat-card fxFlex="100px" fxFlex.lt-xs="100%">  
+        <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
+          <mat-form-field>
+            <input type="text" 
+             matInput 
+             placeholder="Your Name" 
+             ngModel 
+             name="name"
+             required
+            > </mat-form-field>
+      
+            <mat-form-field>
+              <input type="text" 
+               matInput 
+               placeholder="Your Balance" 
+               ngModel 
+               name="balance"
+               required
+              > </mat-form-field>
+      
+              <mat-form-field>
+                <input type="text" 
+                 matInput 
+                 placeholder="Your limit" 
+                 ngModel 
+                 name="limit"
+                 required
+                > </mat-form-field>
+      
+                <mat-form-field>
+                  <input type="text" 
+                   matInput 
+                   placeholder="Your address" 
+                   ngModel 
+                   name="address"
+                   required
+                  > </mat-form-field>
+      
+            <mat-checkbox ngModel name="agree" required color="primary" labelPosition="before">Agree to Terms and Conditions</mat-checkbox>
+
+          <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+        </form>
+      </mat-card>
+      </section>
+         </mat-tab>
+
+    <mat-tab label="Second">
+        <section class="new-training" fxLayout fxLayoutAlign="center"> 
+            <mat-card fxFlex="200px" fxFlex.lt-xs="100%">
+<form fxLayout="column" fxLayoutAlign="center center" #form="ngForm" (ngSubmit)="get(form)">
+    <mat-form-field>
+        <input type="text" 
+         matInput 
+         placeholder="Your address" 
+         ngModel 
+         name="address"
+         required
+        > </mat-form-field>
+  <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Get Details</button>
+</form>
+</mat-card>
+</section></mat-tab>
+  </mat-tab-group>
+

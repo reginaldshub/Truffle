@@ -1,0 +1,42 @@
+<section class="calculator" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex="30%" fxFlex.lt-xs="100%">
+    <mat-card-title fxLayoutAlign="center">Calculator</mat-card-title>
+    <mat-card-subtitle fxLayoutAlign="center">Ethereum Based</mat-card-subtitle>
+    <mat-card-content fxLayoutAlign="center">
+
+      <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <mat-form-field>
+          <input type="text" matInput placeholder="operand1" ngModel name="op1" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput placeholder="operand2" ngModel name="op2" required>
+          </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Operation" name="operator" ngModel required>
+              <mat-option *ngFor="let operators of operator" [value]="operators.value">
+                  {{operators.viewValue}}
+                </mat-option>
+            <!-- <mat-option value="addition" >
+              Addition
+            </mat-option>
+            <mat-option value="substraction">
+              Substraction
+            </mat-option>
+            <mat-option value="multiplication">
+              Multiplication
+            </mat-option>
+            <mat-option value="division">
+              Division
+            </mat-option> -->
+          </mat-select>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+      </form>
+    </mat-card-content>
+    <h3>Result:{{Result}}</h3>
+  </mat-card>
+</section>
+
+
+<!-- <button (click)="initAndDisplayAccount(val)">CheckThis</button> -->
